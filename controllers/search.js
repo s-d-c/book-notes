@@ -12,7 +12,8 @@ router.get('/', function(req, res){
 router.post('/title', function(req, res){
 	var list;
 	var title = req.body.title;
-	var url = 'https://www.goodreads.com/search/index.xml?key=process.env.SECRET_KEY&q=' + title;
+	var key = process.env.SECRET_KEY;
+	var url = 'https://www.goodreads.com/search/index.xml?key=' + key + '&q=' + title;
 	
 	request(url, function(error, response, body){
 		if(error){
@@ -33,7 +34,8 @@ router.post('/title', function(req, res){
 router.post('/author', function(req, res){
 	var list;
 	var author = req.body.author;
-	var url = 'https://www.goodreads.com/search/index.xml?key=process.env.SECRET_KEY&q=' + author;
+	var key = process.env.SECRET_KEY;
+	var url = 'https://www.goodreads.com/search/index.xml?key=' + key + '&q=' + author;
 
 	request(url, function(error, response, body){
 		if(error){
