@@ -1,0 +1,58 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand active" href="/">Book Notes</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="/my-books">My Books</a>
+				</li>
+				<li>
+					<a href="/my-books/:currentId">Current Book</a>
+				</li>
+				<li>
+					<a href="/search">Search Books</a>
+				</li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="/auth/logout">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</nav>
+
+<div class="container">
+	<div class="jumbotron">
+		<h1>Book Notes</h1>
+		<h2>What Are You Reading Today?</h2>
+	</div>
+</div>
+<% if(currentUser) { %>
+<div class="container">
+	<h2><a href="/search">Search Books</a></h2>
+
+	<h2>Or Choose From Your List</h2>
+
+	<h2><a href="/my-books">My Books</a></h2>
+</div>
+
+<% } else { %>
+<div class="container">
+	<h3>Create an account or login to be able to track your books and your reading</h3>
+	<a href="/auth/login" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+	<a href="/auth/signup" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span>Signup</a>
+</div>
+
+<% } %>

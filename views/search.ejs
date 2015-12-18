@@ -1,0 +1,52 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">Book Notes</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="/my-books">My Books</a>
+				</li>
+				<li>
+					<a href="/my-books/:currentId">Current Book</a>
+				</li>
+				<li class="active">
+					<a href="/search">Search Books</a>
+				</li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="/auth/logout">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</nav>
+
+<div class="col-md-6">
+	<h1>Goodreads Book Search</h1>
+	<hr>
+
+	<form class="form" method="POST" action="/search/title">
+		<label for="title">Enter Title</label>
+		<input type="text" class="form-control" placeholder="Search Titles" name="title">
+		<input type="submit" value="Search Title" class="btn btn-primary">
+	</form>
+	<form class="form" method="POST" action="/search/author">
+		<label for="author">Enter Author</label>
+		<input type="text" class="form-control" placeholder="Search Authors" name="author">
+		<input type="submit" value="Search Author" class="btn btn-primary">
+	</form>
+
+</div>
+

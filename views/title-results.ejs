@@ -1,0 +1,65 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">Book Notes</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="/my-books">My Books</a>
+				</li>
+				<li>
+					<a href="/my-books/:currentId">Current Book</a>
+				</li>
+				<li>
+					<a href="/search">Search Books</a>
+				</li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="/auth/logout">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</nav>
+
+<div class="container">
+	<div class="page-header">
+	  <h1>Title Search Results For<small><%= title %></small></h1>
+	</div>
+</div>
+<% list.forEach(function(work){ %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 search-result">
+			<img class="img-responsive center-block img-thumbnail" src="<%= work.best_book[0].image_url[0] %>">
+		</div>
+
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<h3><%= work.best_book[0].title[0] %></h3>
+			<h4>By <%= work.best_book[0].author[0].name %></h4>
+		</div>
+
+		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+			<form action="/my-books/" method="POST">
+				<input type="hidden" name="goodreads_id" value="<%= list[0].best_book[0].id[0]._ %>">
+				<input type="hidden" name="imageUrl" value="<%= work.best_book[0].image_url[0] %>">
+				<input type="hidden" name="title" value="<%= work.best_book[0].title[0] %>">
+				<input type="hidden" name="author" value="<%= work.best_book[0].author[0].name %>">
+				<input type="submit" value="Add To My Books" class="btn btn-primary">
+			</form>
+		</div>
+	</div>
+</div>
+
+<% }); %>
